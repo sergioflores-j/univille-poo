@@ -96,11 +96,15 @@ public class Utils {
 	public static int getFaltasPossiveis(String aulas[][], String alunos[], int aluno) {
 		// busca o numero de faltas do aluno
 		int numFaltas = getNumFaltasAluno(aulas, alunos, aluno);
-		int numFaltasPossiveis = (int) Math.round(aulas.length - (aulas.length * 0.75));
+		// pega a quantidade de aulas para atingir 75% (minimo) e arredonda para baixo
+		int numFaltasPossiveis = (int) Math.floor(aulas.length - (aulas.length * 0.75));
 		
-		System.out.println("numFaltasPossiveis" + numFaltasPossiveis);
-		if (numFaltas < numFaltasPossiveis) {
+		// Verifica se a pessoa já faltou a quantidade possível de aulas 
+		if (numFaltas <= numFaltasPossiveis) {
 			 numFaltasPossiveis -= numFaltas;
+		} else {
+			// caso já tenha faltado o maximo, retorna a 0 nas possíveis
+			numFaltasPossiveis = 0;
 		}
 		return numFaltasPossiveis;
 	}

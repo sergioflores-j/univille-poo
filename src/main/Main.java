@@ -10,7 +10,8 @@ public class Main {
 		  - Cadastro de alunos, limite de 20 alunos; 
 		  - Cadastro da quantidade de aulas, padrão 30 aulas (possibilidade de alterar o numero); 
 		  - Cadastro de presença (controle de frequência) dos alunos nas aulas; 
-		  - Listagem das presenças e faltas, cálculo da frequência (em %) e a apresentação de um cálculo de projeção de faltas possíveis (considerando o número de aulas cadastradas para saber quantas faltas são necessárias para atingir o limite minimo de 75% de presença)
+		  - Listagem das presenças e faltas, cálculo da frequência (em %) 
+		  - Apresentação de um cálculo de projeção de faltas possíveis (considerando o número de aulas cadastradas para saber quantas faltas são necessárias para atingir o limite minimo de 75% de presença)
 		 */
 
 		int opcao = 0;
