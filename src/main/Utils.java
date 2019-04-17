@@ -3,6 +3,7 @@ package main;
 import javax.swing.JOptionPane;
 
 public class Utils {
+	/* Monta um menu de opções, recebendo o texto da mensagem e uma lista de opções */
 	public static int getMenuOpcoes(String texto, int opcoes[]) {
 		int opcao = 0;
 		int retorno = -1;
@@ -12,11 +13,13 @@ public class Utils {
 			// Solicita uma opção do menu
 			opcao = Integer.parseInt(JOptionPane.showInputDialog(texto));
 			
+			// Verifica se há uma opção igual a escolhida na lista opções
 			for (int op : opcoes) {
 				if (op == opcao)
 					temOpcao = true;
 			}
 
+			// Verifica se a opção foi encontrada para adicionar a variavel de retorno
 			if (temOpcao) {
 				retorno = opcao;
 			} else {
@@ -28,6 +31,7 @@ public class Utils {
 		return retorno;
 	}
 	
+	/* Varre uma lista de alunos para montar uma string de retorno (printável) */
 	public static String getListaAlunos(String alunos[]) {
 		String message = "";
 		
@@ -55,6 +59,7 @@ public class Utils {
 		return message;
 	}
 	
+	/* Solicita um número de aula, verificando se o informado existe na lista das aulas */
 	public static int solicitaAula(String aulas[][]) { 
 		// Solicita o numero da aula
 		int aula = Integer.parseInt(JOptionPane.showInputDialog("Informe o número da aula (Possíveis: 1 - " + aulas.length + "):"));
@@ -68,6 +73,8 @@ public class Utils {
 		}
 		return aula;
 	}
+	
+	/* Varre a matriz de aulas para buscar o aluno na coluna de presenças */
 	public static int getNumFaltasAluno(String aulas[][], String alunos[], int aluno) {
 		int numFaltas = 0;
 		// varre as aulas e "seleciona" o aluno informado para verificar suas faltas
@@ -81,6 +88,7 @@ public class Utils {
 		return numFaltas;
 	}
 	
+	/* Busca a porcentagem de faltas do aluno nas aulas */ 
 	public static int getPresencaAluno(String aulas[][], String alunos[], int aluno) {
 		// busca o numero de faltas do aluno
 		int numFaltas = getNumFaltasAluno(aulas, alunos, aluno);
@@ -93,10 +101,11 @@ public class Utils {
 		return pctFaltas;
 	}
 	
+	/* Verifica a quantidade de faltas possíveis para atingir o minimo de 75% de presença */
 	public static int getFaltasPossiveis(String aulas[][], String alunos[], int aluno) {
 		// busca o numero de faltas do aluno
 		int numFaltas = getNumFaltasAluno(aulas, alunos, aluno);
-		// pega a quantidade de aulas para atingir 75% (minimo) e arredonda para baixo
+		// arredonda para baixo a quantidade de aulas para atingir 75% (minimo)
 		int numFaltasPossiveis = (int) Math.floor(aulas.length - (aulas.length * 0.75));
 		
 		// Verifica se a pessoa já faltou a quantidade possível de aulas 
